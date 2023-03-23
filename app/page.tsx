@@ -1,7 +1,23 @@
+import { Suspense } from "react";
+import TodosList from "./todos/TodosList";
+
 export default function Home() {
   return (
-    <section className="h-screen bg-gray-900/50 flex items-center justify-center">
-      <h1 className="text-white/80 text-5xl font-bold">Home</h1>
-    </section>
+    <div>
+      <Suspense fallback={<p className="text-rose-600">Loading Todo</p>}>
+        <h1>Loading Todos</h1>
+        <div className="flex space-x-2">
+          {/* @ts-ignore */}
+          <TodosList />
+        </div>
+      </Suspense>
+      <Suspense fallback={<p className="text-indigo-400">Shopping Trolley</p>}>
+        <h1>Loading Shopping Trolley</h1>
+        <div className="flex space-x-2">
+          {/* @ts-ignore */}
+          <TodosList />
+        </div>
+      </Suspense>
+    </div>
   );
 }
